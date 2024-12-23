@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Cars - Car Rental System</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="MyCart.js"></script>
+</head>
+<body>
+  <div class="car-list">
+    <h2>Available Cars</h2>
+    <div class="car-item" data-car-id="1">
+      <h3>Car Model 1</h3>
+      <p>Year: 2022</p>
+      <p>Price: $50/day</p>
+      <button onclick="addToCart(1, 'Car Model 1', 50)">Add to Cart</button>
+    </div>
+    <div class="car-item" data-car-id="2">
+      <h3>Car Model 2</h3>
+      <p>Year: 2021</p>
+      <p>Price: $45/day</p>
+      <button onclick="addToCart(2, 'Car Model 2', 45)">Add to Cart</button>
+    </div>
+    <!-- Add more car items here -->
+  </div>
+
+  <button onclick="viewCart()">View Cart</button>
+</body>
+</html>

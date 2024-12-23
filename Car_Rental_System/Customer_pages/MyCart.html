@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation Cart - Car Rental System</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="MyCart.js"></script>
+</head>
+<body>
+  <div class="cart-container">
+    <h2>Your Reservation Cart</h2>
+    
+    <div id="cart-items">
+      <!-- Cart items will be displayed here -->
+    </div>
+
+    <button onclick="clearCart()">Clear Cart</button>
+    <button onclick="confirmReservation()">Confirm Reservation</button>
+  </div>
+
+  <script>
+    // Load the cart from localStorage and display it
+    window.onload = function() {
+      const cart = JSON.parse(localStorage.getItem('reservationCart')) || [];
+      
+      const cartItemsDiv = document.getElementById('cart-items');
+      
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+      } else {
+        cart.forEach(item => {
+          const carDiv = document.createElement('div');
+          carDiv.classList.add('cart-item');
+          carDiv.innerHTML = `
+            <p>Model: ${item.carModel}</p>
+            <p>Price: $${item.carPrice}/day</p>
+            <p>Quantity: ${item.quantity}</p>
+            <button onclick="removeFromCart(${item.carId})">Remove</button>
+          `;
+          cartItemsDiv.appendChild(carDiv);
+        });
+      }
+    };
+
+    // Function to remove a car from the cart
+    function removeFromCart(carId) {
+      let cart = JSON.parse(localStorage.getItem('reservationCart')) || [];
+      cart = cart.filter(item => item.carId !== carId);
+      localStorage.setItem('reservationCart', JSON.stringify(cart));
+      window.location.reload();
+    }
+
+    // Function to clear the cart
+    function clearCart() {
+      localStorage.removeItem('reservationCart');
+      window.location.reload();
+    }
+
+    // Function to confirm reservation
+    function confirmReservation() {
+      const cart = JSON.parse(localStorage.getItem('reservationCart')) || [];
+      
+      if (cart.length === 0) {
+        alert('Your cart is empty! Please add cars to your reservation.');
+        return;
+      }
+
+      // Normally, you would send this data to the server to finalize the reservation
+      alert('Reservation confirmed! Redirecting to your reservations...');
+      localStorage.removeItem('reservationCart'); // Clear the cart
+      window.location.href = 'MyCart.html'; // Redirect to the reservation list page
+    }
+  </script>
+</body>
+</html>
