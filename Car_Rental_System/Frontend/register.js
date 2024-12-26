@@ -15,7 +15,7 @@ document.getElementById('registrationForm').addEventListener('submit', function 
 
   if (userExists) {
     alert('This email is already registered. Please log in!');
-    window.location.href = 'login.html'; // Redirect to login page if email is already registered
+    window.location.href = 'customer_login.html'; // Redirect to login page if email is already registered
     return;
   }
 
@@ -26,6 +26,6 @@ document.getElementById('registrationForm').addEventListener('submit', function 
   // Save the updated users array to localStorage
   localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers));
 
-  alert('Registration successful! Redirecting to the home page...');
-  window.location.href = 'home_page.html'; // Redirect to home page after successful registration
+  alert('Registration successful! Redirecting to the Login page...');
+  window.location.href = 'customer_login.html'; // Redirect to home page after successful registration
 });
