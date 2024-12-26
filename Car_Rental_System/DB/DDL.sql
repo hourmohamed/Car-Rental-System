@@ -1,14 +1,14 @@
 CREATE DATABASE car_rental_system;
-USE car_rental_system;
+
 
 CREATE TABLE car(
-    plate_number INT PRIMARY KEY,
-    car_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL ,
+    plate_number INT,
+    car_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT ,
     color varchar(50),
     model varchar(50),
     `year` INT,
     car_status varchar(50),
-    price INT,
+    price INT
 
     );
     
@@ -25,7 +25,7 @@ CREATE TABLE customer(
 
 
 CREATE TABLE rental(
-    rental_id INT PRIMARY AUTO_INCREMENT NOT NULL,
+    rental_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     customer_id INT,
     rental_date DATE,
     return_date DATE,
@@ -36,7 +36,7 @@ CREATE TABLE rental(
 
 CREATE TABLE admin(
    
-    admin_id INT PRIMARY AUTO_INCREMENT NOT NULL,
+    admin_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     email varchar(10) NOT NULL,
     password varchar(50)NOT NULL
 
