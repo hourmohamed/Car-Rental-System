@@ -8,7 +8,8 @@ CREATE TABLE car(
     model varchar(50),
     `year` INT,
     car_status varchar(50),
-    price INT
+    price INT,
+    seating_capacity INT,
 
     );
     
