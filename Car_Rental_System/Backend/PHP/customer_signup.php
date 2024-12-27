@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $servername = "127.0.0.1";
         $username_db = "root";
-        $password_db = "109578HH";
+        $password_db = "";
         $db_name = "car_rental_system";
         
         $conn = new mysqli($servername, $username_db, $password_db, $db_name);
@@ -43,13 +43,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
         $result = $stmt->get_result();
 
+        // if ($result->num_rows > 0) {
+        //     echo "User with this email already exists.";
+        //     $stmt->close();
+        //     $conn->close();
+        //     exit;
+        // }
+
         if ($result->num_rows > 0) {
-            echo "User with this email already exists.";
-            $stmt->close();
-            $conn->close();
+            // Redirect to login page if the email already exists
+            header("Location: ../../Frontend/HTML/customer_login.html?error=email_exists");
             exit;
         }
-
         
         $stmt = $conn->prepare("INSERT INTO customer (customer_name , email, password, phone_number) VALUES (?, ?, ?, ?)");
         if ($stmt === false) {

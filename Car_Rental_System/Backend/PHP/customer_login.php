@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($email) && !empty($password)) {
         $servername = "127.0.0.1";
         $username_db = "root";
-        $password_db = "109578HH";
+        $password_db = "";
         $db_name = "car_rental_system";
 
 
@@ -36,11 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $update_stmt->close();
 
                 // header("Location: login_redirection.php");
-                header("Location: ../../Frontend/HTML/home_page.html");
+                header("Location: ../../Frontend/HTML/customer_search.html");
                 exit();
             } elseif (password_verify($password, $stored_password)) {
                 // header("Location: login_redirection.php");
-                header("Location: ../../Frontend/HTML/home_page.html");
+                header("Location: ../../Frontend/HTML/customer_search.html");
                 exit();
             } else {
                 echo "Invalid password.";
