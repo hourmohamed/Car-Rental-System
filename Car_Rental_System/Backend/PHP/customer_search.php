@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo '<script>
             alert("No cars found")
-            window.location.href = "../../Frontend/HTML/admin_search.html";
+            window.location.href = "../../Frontend/HTML/customer_search.html";
             </script>';
     }
 
