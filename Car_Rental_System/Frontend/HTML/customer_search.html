@@ -8,30 +8,23 @@
 </head>
 <body>
   <div class="form-container">
-    <h2>
-      Search
-    </h2>
+    <h2>Search</h2>
     <p>Enter the Specifications you want to Search for!</p>
-    <form id="searchFrom" action="../../Backend/PHP/customer_search.php" method="post" onsubmit="return validateForm()">
+    <form id="searchFrom" action="../../Backend/PHP/customer_search.php" method="post">
       <label for="color">Color:</label>
-      <input type="text" id="color" name="color" placeholder="Enter the color" >
+      <input type="text" id="color" name="color" placeholder="Enter the color">
 
       <label for="model">Model:</label>
-      <input type="text" id="model" name="model" placeholder="Enter the model" >
+      <input type="text" id="model" name="model" placeholder="Enter the model">
 
       <label for="year">Year:</label>
-      <input type="number" id="year" name="year" placeholder="Enter the year"   min="1900" max="2099">
+      <input type="number" id="year" name="year" placeholder="Enter the year" min="1900" max="2099">
 
-      <label for="capacity">Capcity:</label>
-      <input type="number" id="capacity" name="capacity" placeholder="Enter the capacity" >
+      <label for="capacity">Capacity:</label>
+      <input type="number" id="capacity" name="capacity" placeholder="Enter the capacity">
 
       <button type="submit">Search</button>
-
     </form>
   </div>
-
-
-  <script src="../JS/customer_search_authentication.js"></script> 
 </body>
-
 </html>

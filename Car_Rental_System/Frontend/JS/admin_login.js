@@ -16,10 +16,7 @@ function validateForm() {
       return false; 
     }
 
-  if (passed) {
-    // Redirect to customer_search page after successful validation
-    window.location.href = "../../Frontend/HTML/customer_search.html"; // Adjust the URL as needed
-  }
-  return passed;
+  
+  return true;
 }
 
