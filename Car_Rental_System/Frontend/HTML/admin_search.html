@@ -12,7 +12,7 @@
       Admin Search
     </h2>
     <p>Enter the Specifications you want to Search for!</p>
-    <form id="seachFrom" action="../../Backend/PHP/admin_search.php" method="post" onsubmit="return validateForm()"></form>
+    <form id="searchFrom" action="../../Backend/PHP/admin_search.php" method="post" onsubmit="return validateForm()">
       <label for="color">Color:</label>
       <input type="text" id="color" name="color" placeholder="Enter the color" required>
 
@@ -28,8 +28,9 @@
       <label for="Plate Number">Plate Number:</label>
       <input type="text" id="Plate_Number" name="Plate_Number" placeholder="Enter the plate Number" required>
 
-      <button onclick="">Search</button> 
+      <button type="submit">Search</button>
 
+    </form>
   </div>
 
 
