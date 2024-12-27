@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Search</title>
+  <link rel="stylesheet" href="../Styles/styles.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>
+      Admin Search
+    </h2>
+    <p>Enter the Specifications you want to Search for!</p>
+    <form id="seachFrom" action="../../Backend/PHP/admin_search.php" method="post" onsubmit="return validateForm()"></form>
+      <label for="color">Color:</label>
+      <input type="text" id="color" name="color" placeholder="Enter the color" required>
+
+      <label for="model">Model:</label>
+      <input type="text" id="model" name="model" placeholder="Enter the model" required>
+
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" placeholder="Enter the year" required required min="1900" max="2099">
+
+      <label for="capacity">Capcity:</label>
+      <input type="number" id="capacity" name="capacity" placeholder="Enter the capacity" required>
+
+      <label for="Plate Number">Plate Number:</label>
+      <input type="text" id="Plate_Number" name="Plate_Number" placeholder="Enter the plate Number" required>
+
+      <button onclick="">Search</button> 
+
+  </div>
+
+
+  <script src="../JS/admin_search_authentication.js"></script> 
+</body>
+
+</html>
