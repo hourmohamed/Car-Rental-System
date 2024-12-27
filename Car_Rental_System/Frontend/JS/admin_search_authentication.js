@@ -3,7 +3,7 @@ function validateForm() {
     const model = document.getElementById("model").value;
     const year = document.getElementById("year").value;
     const capacity = document.getElementById("capacity").value;
-    const plate_number = document.getElementById('plate_number').value;
+    const plate_number = document.getElementById('Plate_number').value;
     let passed = true;
   
     if(color === "" && model ==="" && year === "" && capacity === "" && plate_number === ""){
