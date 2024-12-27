@@ -1,14 +1,14 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = filter_var(trim($_POST['address'] ?? ''), FILTER_SANITIZE_EMAIL);
-    $password = trim($_POST['license_number'] ?? '');
+    $license_number = trim($_POST['license_number'] ?? '');  // License number field
+    $address = trim($_POST['address'] ?? '');  // Address field
+    $payment_method = $_POST['method'] ?? '';  // Payment method selected by the user
 
-    if (!empty($email) && !empty($password)) {
+    if (!empty($license_number) && !empty($address) && !empty($payment_method)) {
         $servername = "127.0.0.1";
         $username_db = "root";
         $password_db = "109578HH";
         $db_name = "car_rental_system";
-
 
         $conn = new mysqli($servername, $username_db, $password_db, $db_name);
 
@@ -17,43 +17,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed.");
         }
 
-       
-        $stmt = $conn->prepare("SELECT password FROM payment WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $stored_password = $row['password'];
-
          
-            if ($stored_password === md5($password)) {
-                $new_hashed_password = password_hash($password, PASSWORD_DEFAULT);
-                $update_stmt = $conn->prepare("UPDATE customer SET password = ? WHERE email = ?");
-                $update_stmt->bind_param("ss", $new_hashed_password, $email);
-                $update_stmt->execute();
-                $update_stmt->close();
+        $insert_customer_stmt = $conn->prepare("INSERT INTO customer (license_number, address) VALUES (?, ?)");
+        $insert_customer_stmt->bind_param("ss", $license_number, $address);
+        $insert_customer_stmt->execute();
+        $insert_customer_stmt->close();
+        
+         
+        $insert_payment_stmt = $conn->prepare("INSERT INTO payment method VALUES (?)");
+        $insert_payment_stmt->bind_param("s", $payment_method);
+        $insert_payment_stmt->execute();
+        $insert_payment_stmt->close();
+        
+        
+        header("Location: ../../Frontend/HTML/customer_search.html");
+        exit();
 
-                // header("Location: login_redirection.php");
-                header("Location: ../../Frontend/HTML/home_page.html");
-                exit();
-            } elseif (password_verify($password, $stored_password)) {
-                // header("Location: login_redirection.php");
-                header("Location: ../../Frontend/HTML/home_page.html");
-                exit();
-            } else {
-                echo "Invalid password.";
-            }
-        } else {
-            echo "No user found with this email.";
-        }
-
-        $stmt->close();
+        $check_customer_stmt->close();
         $conn->close();
     } else {
-        echo "Email and password cannot be empty.";
+        echo "License number, address, and payment method cannot be empty.";
     }
 }
 ?>
-
