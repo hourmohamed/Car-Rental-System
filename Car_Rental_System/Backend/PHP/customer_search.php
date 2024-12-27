@@ -70,7 +70,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check and process the results
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo "Car ID: " . $row["car_id"] . " | Model: " . $row["model"] . " | Year: " . $row["year"] . "<br>";
+            // echo "Car ID: " . $row["car_id"] . " | Model: " . $row["model"] . " | Year: " . $row["year"] . "<br>";
+            header("../../Frontend/HTML/search_results_page.html");
+            exit;
         }
     } else {
         // If no cars found, display an alert and redirect

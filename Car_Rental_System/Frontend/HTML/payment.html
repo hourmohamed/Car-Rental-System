@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment</title>
+  <link rel="stylesheet" href="../Styles/styles.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>
+      Payment
+    </h2>
+    <form id="paymentForm" action="../../Backend/PHP/payment.php" method="post" onsubmit="return validateForm()">
+
+
+    
+      <label for="license_number">License number:</label>
+      <input type="text" id="license_number" name="license_number" placeholder="Enter the license number" >
+
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" placeholder="Enter your address" >
+
+
+
+        <label for="method">Payment Method:</label>
+        <select id="method" name="method">
+          <option value="credit_card">Credit Card</option>
+          <option value="cash_on_delivery">Cash on Delivery</option>
+        </select><br>
+
+        <label for="amount">Total Amount:</label>
+      
+
+      <button type="submit">Pay</button>
+
+    </form>
+  </div>
+
+
+  <script src="../JS/payment_authentication.js"></script> 
+</body>
+
+</html>
