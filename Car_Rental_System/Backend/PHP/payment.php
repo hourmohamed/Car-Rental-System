@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $license_number = trim($_POST['license_number'] ?? '');  // License number field
-    $address = trim($_POST['address'] ?? '');  // Address field
-    $payment_method = $_POST['method'] ?? '';  // Payment method selected by the user
+    $license_number = trim($_POST['license_number'] ?? '');  
+    $address = trim($_POST['address'] ?? '');  
+    $payment_method = $_POST['method'] ?? '';  
 
     if (!empty($license_number) && !empty($address) && !empty($payment_method)) {
         $servername = "127.0.0.1";
