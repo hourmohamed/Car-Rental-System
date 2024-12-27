@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost"; 
 $username = "root";
-$password = "";
+$password = "109578HH";
 $dbname = "Car_Rental_System";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

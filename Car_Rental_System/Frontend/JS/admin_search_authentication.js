@@ -15,3 +15,6 @@ function validateForm() {
     return true;
   }
   
+ function redirectToPage() {
+    // alert("search done");
+  }
