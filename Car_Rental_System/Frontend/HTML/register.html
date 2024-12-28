@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="form-container">
-    <h2>Customer_Sign_Up</h2>
+    <h2>Customer SignUp</h2>
     <p>Create your account to reserve a car!</p>
     <form id="registrationForm" action="../../Backend/PHP/customer_signup.php" method="post" onsubmit="return validateForm()">
       <label for="firstName">First Name:</label>
@@ -25,8 +25,17 @@
 
       <button type="submit" class="btn">Register</button>
     </form>
+    <div class="additional-options">
+      <p>Already have an account?</p>
+      <button onclick="redirectToLogin()" class="btn">Login</button>
+    </div>
   </div>
 
   <script src="../JS/register.js"></script>
+  <script>
+    function redirectToLogin() {
+      window.location.href = "../../Frontend/HTML/customer_login.html"; 
+    }
+  </script>
 </body>
 </html>

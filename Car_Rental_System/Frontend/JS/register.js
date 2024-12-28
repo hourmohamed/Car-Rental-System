@@ -33,6 +33,6 @@ function validateForm() {
 
   // If validation passed, allow form submission
   alert("Form submitted successfully!");
-  window.location.href = "/Frontend/HTML/customer_search.html";
+  window.location.href = "/Frontend/HTML/home_page.html";
   return true;
 }
