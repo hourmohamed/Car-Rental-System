@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($email) && !empty($password)) {
         $servername = "127.0.0.1";
         $username_db = "root";
-        $password_db = "109578HH";
+        $password_db = "";
         $db_name = "car_rental_system";
 
 

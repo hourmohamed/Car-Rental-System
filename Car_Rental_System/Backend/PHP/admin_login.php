@@ -37,7 +37,7 @@ if ($result) {
         if ($hashed_password === $password_field) {
             echo '<script>
             alert("Welcome")
-            window.location.href = "../../Frontend/HTML/admin_home_page.html";
+            window.location.href = "../../Frontend/HTML/admin_option.html";
             </script>';
             //redirect
         } else {

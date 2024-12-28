@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($license_number) && !empty($address) && !empty($payment_method)) {
         $servername = "127.0.0.1";
         $username_db = "root";
-        $password_db = "109578HH";
+        $password_db = "";
         $db_name = "car_rental_system";
 
         $conn = new mysqli($servername, $username_db, $password_db, $db_name);
