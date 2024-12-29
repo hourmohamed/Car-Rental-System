@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "109578HH";
 $dbname = "Car_Rental_System";
 
 // Check if form is submitted
