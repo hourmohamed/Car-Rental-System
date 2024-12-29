@@ -10,8 +10,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $model = $_POST["model"] ?? null; 
     $year = $_POST["year"] ?? null;
     $plate = $_POST["plate_number"];
-    // $price = $_POST["price"] ?? null;
-    // $capacity = $_POST["capacity"] ?? null;
     $status = $_POST["status"] ?? null;
     $price = is_numeric($_POST["price"]) ? $_POST["price"] : null;
     $capacity = is_numeric($_POST["capacity"]) ? $_POST["capacity"] : null;
@@ -28,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Check if the car exists in the database
+    
     $stmt = $conn->prepare("SELECT * FROM car WHERE plate_number = ?");
     if ($stmt === false) {
         error_log("Error preparing statement: " . $conn->error);
@@ -40,11 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = $stmt->get_result();
 
     if ($result->num_rows === 0) {
-        // echo '<script>
-        //     alert("Car with the given plate number does not exist")
-        //     window.location.href = "../../Frontend/HTML/admin_option.html";
-        //     </script>';
-        echo "Car with the given plate number does not exist.";
+        echo '<script>
+            alert("Car with the given plate number does not exist")
+            window.location.href = "../../Frontend/HTML/admin_update.html";
+            </script>';
+        // echo "Car with the given plate number does not exist.";
         $stmt->close();
         $conn->close();
         exit();
@@ -94,7 +92,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // Construct the query
     $updateQuery = "UPDATE car SET " . implode(", ", $updateFields) . " WHERE plate_number = ?";
     $params[] = $plate;
     $types .= "s";
