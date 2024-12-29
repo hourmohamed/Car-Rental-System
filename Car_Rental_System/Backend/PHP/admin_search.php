@@ -1,15 +1,20 @@
+
 <?php
-$servername = "localhost"; 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "Car_Rental_System";
 
+// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $color = $_POST["color"] ?? null;
-    $model = $_POST["model"] ?? null;
-    $year = $_POST["year"] ?? null;
-    $capacity = $_POST["capacity"] ?? null;
-    $plate_no = $_POST["Plate_Number"] ?? null;
+    // Sanitize and validate the input data
+    $color = isset($_POST["color"]) ? htmlspecialchars($_POST["color"]) : null;
+    $model = isset($_POST["model"]) ? htmlspecialchars($_POST["model"]) : null;
+    $year = isset($_POST["year"]) && is_numeric($_POST["year"]) ? (int)$_POST["year"] : null;
+    $capacity = isset($_POST["capacity"]) && is_numeric($_POST["capacity"]) ? (int)$_POST["capacity"] : null;
 
     // Database connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -43,39 +48,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $params[] = $capacity;
         $types .= "i";
     }
-    if ($plate_no) {
-        $query .= " AND `plate_number` = ?";
-        $params[] = $plate_no;
-        $types .= "i";
-    }
 
     // Prepare and execute the query
     $stmt = $conn->prepare($query);
+    if ($stmt === false) {
+        die("Error preparing the query: " . $conn->error);
+    }
+
     if ($params) {
         $stmt->bind_param($types, ...$params);
     }
+
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Check and process the results
-    if ($result && $result->num_rows > 0) {
-        
-        while ($row = $result->fetch_assoc()) {
-            // echo "Car ID: " . $row["car_id"] . " | Model: " . $row["model"] . " | Year: " . $row["year"] . "<br>";
-            header("../../Frontend/HTML/search_results_page.html");
-            exit;
-        }
-    } else {
-        echo '<script>
-            alert("No cars found")
-            window.location.href = "../../Frontend/HTML/admin_search.html";
-            </script>';
+    // Process the results and store them in an array
+    $carResults = [];
+    while ($row = $result->fetch_assoc()) {
+        $carResults[] = $row;
     }
 
-    // Close the connection
+    // Store the results in a session or pass them as a URL parameter
+    session_start();
+    $_SESSION['car_results'] = $carResults;
+
     $stmt->close();
     $conn->close();
+
+    // Redirect to the results page
+    header('Location: admin_search_results.php');
+    exit();
 } else {
-    die("Invalid request.");
+    die("Invalid request method.");
 }
 ?>
