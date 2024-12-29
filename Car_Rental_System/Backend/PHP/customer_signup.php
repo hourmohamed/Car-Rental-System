@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['fname'] = $fname;
             
             // header("Location: signup_redirection.php");
-            header("Location: ../../Frontend/HTML/home_page.html");
+            header("Location: ../../Frontend/HTML/customer_search.html");
             exit; 
         } else {
             error_log("Error executing statement: " . $stmt->error);
