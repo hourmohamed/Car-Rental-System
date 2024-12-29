@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Page</title>
+  <link rel="stylesheet" href="../Styles/report_page.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Car Rental System</h1>
+    <h2>Reports Page</h2>
+    <ul>
+      <li><a href="../HTML/admin_option.html">Back to options</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <h2>Generate Reports</h2>
+  </header>
+
+  <main class="report-options">
+    <form action="#" method="POST">
+      <div class="form-group">
+        <h3>All Reservations Within a Specified Period</h3>
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="start_date" required>
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="end_date" required>
+        <button type="submit">Generate Report</button>
+      </div>
+
+      <div class="form-group">
+        <h3>Reservations of a Specific Car</h3>
+        <label for="car-id">Car Plate ID:</label>
+        <input type="text" id="car-id" name="car_plate_id" required>
+        <label for="car-start-date">Start Date:</label>
+        <input type="date" id="car-start-date" name="start_date" required>
+        <label for="car-end-date">End Date:</label>
+        <input type="date" id="car-end-date" name="end_date" required>
+        <button type="submit">Generate Report</button>
+      </div>
+
+      <div class="form-group">
+        <h3>Status of All Cars on a Specific Day</h3>
+        <label for="status-date">Date:</label>
+        <input type="date" id="status-date" name="status_date" required>
+        <button type="submit">Generate Report</button>
+      </div>
+
+      <div class="form-group">
+        <h3>Reservations of a Specific Customer</h3>
+        <label for="customer-id">Customer ID:</label>
+        <input type="text" id="customer-id" name="customer_id" required>
+        <button type="submit">Generate Report</button>
+      </div>
+
+      <div class="form-group">
+        <h3>Daily Payments Within a Specific Period</h3>
+        <label for="payment-start-date">Start Date:</label>
+        <input type="date" id="payment-start-date" name="start_date" required>
+        <label for="payment-end-date">End Date:</label>
+        <input type="date" id="payment-end-date" name="end_date" required>
+        <button type="submit">Generate Report</button>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
