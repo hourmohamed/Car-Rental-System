@@ -20,7 +20,7 @@
   </header>
 
   <main class="admin-form">
-    <form action="/add-car" method="POST" class="add-car-form">
+    <form action="../../Backend/PHP/add_cars.php" method="POST" onsubmit="return validateForm()" class="add-car-form"  >
       <div class="form-group">
         <label for="car-color">Color:</label>
         <input type="text" id="car-color" name="color" required>
@@ -63,6 +63,7 @@
 
       <button type="submit" class="btn">Add Car</button>
     </form>
+    <script src="../JS/add_cars.js"></script>
   </main>
 </body>
 </html>
