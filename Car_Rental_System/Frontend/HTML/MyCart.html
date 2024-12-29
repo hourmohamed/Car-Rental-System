@@ -17,6 +17,7 @@
 
     <button onclick="clearCart()">Clear Cart</button>
     <button onclick="confirmReservation()">Confirm Reservation</button>
+    <button onclick="goToCustomerSearch()">Return to Search Page</button>
   </div>
 
   <script>
@@ -70,6 +71,11 @@
       alert('Reservation confirmed! Redirecting to your reservations...');
       localStorage.removeItem('reservationCart'); // Clear the cart
       window.location.href = '../HTML/MyCart.html'; // Redirect to the reservation list page
+    }
+
+    // Function to return to customer search page
+    function goToCustomerSearch() {
+      window.location.href = '../HTML/customer_search.html';
     }
   </script>
 </body>
