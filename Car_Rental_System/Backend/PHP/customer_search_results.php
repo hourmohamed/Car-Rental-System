@@ -26,8 +26,8 @@ session_start();
             echo "<h3>" . htmlspecialchars($car['model']) . " (" . htmlspecialchars($car['year']) . ")</h3>";
             echo "<p><strong>Color:</strong> " . htmlspecialchars($car['color']) . "</p>";
             echo "<p><strong>Capacity:</strong> " . htmlspecialchars($car['seating_capacity']) . " people</p>";
-            echo "<form action='../../Frontend/HTML/register.html' method='get'>";
-            echo "<button type='submit'>Add to Cart</button>"; // This button will take them to the registration page
+            echo "<form action='../../Frontend/HTML/MyCart.html' method='get'>";
+            echo "<button type='submit'>Add to Cart</button>"; 
             echo "</form>";
             echo "</div>";
         }

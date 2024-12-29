@@ -1,0 +1,129 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Results Container */
+.results-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #7f8c8d;
+}
+
+/* Car Cards */
+.car-card {
+    background-color: #ecf0f1;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.car-card:hover {
+    background-color: #bdc3c7;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.car-card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.car-card p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #7f8c8d;
+}
+
+.car-card form {
+    margin-top: 10px;
+}
+
+.car-card button {
+    padding: 10px 15px;
+    font-size: 1.1em;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.car-card button:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .results-container {
+        padding: 15px;
+    }
+
+    .car-card {
+        padding: 15px;
+    }
+
+    .car-card h3 {
+        font-size: 1.3em;
+    }
+
+    .car-card p {
+        font-size: 1em;
+    }
+
+    .car-card button {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .results-container {
+        padding: 10px;
+    }
+
+    .car-card {
+        padding: 10px;
+    }
+
+    .car-card h3 {
+        font-size: 1.2em;
+    }
+
+    .car-card p {
+        font-size: 0.9em;
+    }
+
+    .car-card button {
+        font-size: 0.9em;
+        padding: 7px 10px;
+    }
+}

@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$servername = "localhost"; 
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "Car_Rental_System";
@@ -14,9 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $model = isset($_POST["model"]) ? htmlspecialchars($_POST["model"]) : null;
     $year = isset($_POST["year"]) && is_numeric($_POST["year"]) ? (int)$_POST["year"] : null;
     $capacity = isset($_POST["capacity"]) && is_numeric($_POST["capacity"]) ? (int)$_POST["capacity"] : null;
-
-    // Debugging: Print the input data to verify
-    // var_dump($_POST); // Uncomment to check form data
 
     // Database connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -51,9 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $types .= "i";
     }
 
-    // Debugging: Output the query to check if it's formed correctly
-    // echo $query; // Uncomment to check the query string
-
     // Prepare and execute the query
     $stmt = $conn->prepare($query);
     if ($stmt === false) {
@@ -67,26 +61,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Check and process the results
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "Car ID: " . $row["car_id"] . " | Model: " . $row["model"] . " | Year: " . $row["year"] . "<br>";
-            header("../../Frontend/HTML/customer_search.html");
-            exit;
-        }
-    } else {
-        // If no cars found, display an alert and redirect
-        echo '<script>
-            alert("No cars found matching the criteria.");
-            window.location.href = "../../Frontend/HTML/customer_search.html";
-        </script>';
+    // Process the results and store them in an array
+    $carResults = [];
+    while ($row = $result->fetch_assoc()) {
+        $carResults[] = $row;
     }
 
-    // Close the connection
+    // Store the results in a session or pass them as a URL parameter
+    session_start();
+    $_SESSION['car_results'] = $carResults;
+
     $stmt->close();
     $conn->close();
+
+    // Redirect to the results page
+    header('Location: customer_search_results.php');
+    exit();
 } else {
-    // If the request method is not POST, show an error
     die("Invalid request method.");
 }
 ?>
