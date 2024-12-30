@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "109578HH";
 $dbname = "Car_Rental_System";
 
 // Retrieve the customer_id from the URL query string

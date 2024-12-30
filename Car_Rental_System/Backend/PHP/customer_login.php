@@ -8,8 +8,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($email) && !empty($password)) {
         $servername = "localhost";
         $username_db = "root";
+<<<<<<< HEAD
         $password_db = "";
         $db_name = "Car_Rental_System";
+=======
+        $password_db = "109578HH";
+        $db_name = "car_rental_system";
+>>>>>>> 551ccd3d34bf8bd02528dde6cdbb73c924d25714
 
         $conn = new mysqli($servername, $username_db, $password_db, $db_name);
 
