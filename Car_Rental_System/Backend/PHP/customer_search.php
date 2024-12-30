@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "109578HH";
 $dbname = "Car_Rental_System";
 print_r($_SESSION);
 // Check if the customer_id is passed in the URL

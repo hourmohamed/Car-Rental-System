@@ -10,7 +10,7 @@ if (isset($_GET['customer_id'])) {
     // Database connection
     $servername = "localhost"; // Replace with your server details
     $username = "root";        // Replace with your username
-    $password = "";            // Replace with your password
+    $password = "109578HH";            // Replace with your password
     $dbname = "Car_Rental_System"; // Replace with your database name
 
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -61,6 +61,13 @@ if (isset($_GET['customer_id'])) {
   <script src="../JS/MyCart.js"></script>
 </head>
 <body>
+<nav class="navbar">
+    <h1>Car Rental System</h1>
+    <ul>
+      <li><a href="../HTML/home_page.html">Home</a></li>
+      
+    </ul>
+  </nav>
   <div class="cart-container">
     <h2>Your Reservation Cart</h2>
     
@@ -89,7 +96,7 @@ if (isset($_GET['customer_id'])) {
 
     <button onclick="clearCart()">Clear Cart</button>
     <button onclick="confirmReservation()">Confirm Reservation</button>
-    <button onclick="goToCustomerSearch()">Return to Search Page</button>
+    
   </div>
 
   <script>
@@ -126,6 +133,8 @@ function calculateTotalAmount() {
           .catch(error => console.error('Error:', error));
       }
     }
+   
+    
     function removeCar(carId) {
   const customerId = new URLSearchParams(window.location.search).get('customer_id');
   if (customerId && carId) {

@@ -24,7 +24,7 @@ session_start();
     // Database connection
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "109578HH";
     $dbname = "Car_Rental_System";
 
     $conn = new mysqli($servername, $username, $password, $dbname);

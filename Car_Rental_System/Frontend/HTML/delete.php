@@ -10,7 +10,7 @@ if (isset($_GET['customer_id'])) {
     // Database connection
     $servername = "localhost"; // Replace with your server details
     $username = "root";        // Replace with your username
-    $password = "";            // Replace with your password
+    $password = "109578HH";            // Replace with your password
     $dbname = "Car_Rental_System"; // Replace with your database name
 
     $conn = new mysqli($servername, $username, $password, $dbname);

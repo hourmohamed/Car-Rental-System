@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!empty($license_number) && !empty($address) && !empty($payment_method)) {
         $servername = "localhost";
         $username_db = "root";
-        $password_db = "";
+        $password_db = "109578HH";
         $db_name = "Car_Rental_System";
 
         // Create a database connection

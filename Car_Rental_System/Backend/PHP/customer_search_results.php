@@ -2,7 +2,7 @@
 session_start();
 
 // Debug: print session data to check available values
-print_r($_SESSION);
+
 
 // Retrieve the customer_id from the session (it should already be set if the user is logged in)
 if (isset($_SESSION['customer_id'])) {

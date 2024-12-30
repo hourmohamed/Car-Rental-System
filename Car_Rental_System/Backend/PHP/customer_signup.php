@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Database connection
         $servername = "localhost";
         $username_db = "root";
-        $password_db = "";
+        $password_db = "109578HH";
         $db_name = "Car_Rental_System";
         
         $conn = new mysqli($servername, $username_db, $password_db, $db_name);

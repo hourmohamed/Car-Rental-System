@@ -1,12 +1,12 @@
 <?php
 session_start();
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
-// Debug the received GET parameters
-echo "<pre>";
-print_r($_GET);
-echo "</pre>";
+// // Debug the received GET parameters
+// echo "<pre>";
+// print_r($_GET);
+// echo "</pre>";
 
 // Check if customer_email is passed
 // if (isset($_GET['email']) && !empty($_GET['email'])) {
@@ -57,7 +57,7 @@ if ($car_model && $car_year && $car_color && $car_seating_capacity) {
     // Database connection
     $servername = "localhost"; // Replace with your server details
     $username = "root";        // Replace with your username
-    $password = "";            // Replace with your password
+    $password = "109578HH";            // Replace with your password
     $dbname = "Car_Rental_System"; // Replace with your database name
 
     $conn = new mysqli($servername, $username, $password, $dbname);
