@@ -17,6 +17,12 @@ session_start();
 
     <?php
     // Check if car results are available in the session
+    if (isset($_GET['customer_id'])) {
+      $customer_id = $_GET['customer_id'];
+      echo "Customer ID: " . htmlspecialchars($customer_id);
+  } else {
+      echo "Customer ID not found.";
+  }
     if (isset($_SESSION['car_results']) && !empty($_SESSION['car_results'])) {
         $carResults = $_SESSION['car_results'];
 

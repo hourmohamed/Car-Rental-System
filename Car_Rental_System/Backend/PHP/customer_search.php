@@ -84,7 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 
     // Redirect to the results page
-    header('Location: customer_search_results.php');
+    //header('Location: customer_search_results.php');
+    header("Location: customer_search_results.php?customer_id=" . $customer_id);
     exit();
 } else {
     die("Invalid request method.");
