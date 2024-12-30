@@ -6,7 +6,7 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "Car_Rental_System";
-
+print_r($_SESSION);
 // Check if the customer_id is passed in the URL
 if (isset($_POST['customer_id'])) {
     $customer_id = $_POST['customer_id'];
