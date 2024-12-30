@@ -6,7 +6,7 @@
 $servername = "localhost"; 
 $username = "root";
 $password = "";
-$dbname = "car_rental_system";
+$dbname = "Car_Rental_System";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];

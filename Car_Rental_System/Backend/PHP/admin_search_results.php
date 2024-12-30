@@ -17,28 +17,53 @@ session_start();
   </nav>
 
   <div class="results-container">
-    <h2>Search Results</h2>
-    <p>Here are the cars that match your search criteria:</p>
+    <h2>Customer and Rental Data</h2>
+    <p>Here are the customers and their rental details:</p>
 
     <?php
-    // Check if car results are available in the session
-    if (isset($_SESSION['car_results']) && !empty($_SESSION['car_results'])) {
-        $carResults = $_SESSION['car_results'];
+    // Database connection
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "Car_Rental_System";
 
-        // Display the results
-        foreach ($carResults as $car) {
-            echo "<div class='car-card'>";
-            echo "<h3>" . htmlspecialchars($car['model']) . " (" . htmlspecialchars($car['year']) . ")</h3>";
-            echo "<p><strong>Color:</strong> " . htmlspecialchars($car['color']) . "</p>";
-            echo "<p><strong>Capacity:</strong> " . htmlspecialchars($car['seating_capacity']) . " people</p>";
-            echo "</div>";
-        }
+    $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Clear the session data after displaying the results
-        unset($_SESSION['car_results']);
-    } else {
-        echo "<p>No cars found matching your criteria.</p>";
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
     }
+
+    // SQL query to join customer and rental tables
+    $query = "SELECT customer.customer_id, customer.customer_name, customer.email, customer.address, customer.phone_number, 
+              customer.license_number, rental.rental_id, rental.rental_date, rental.return_date, rental.car_id
+              FROM customer
+              LEFT JOIN rental ON customer.customer_id = rental.customer_id";
+
+    // Prepare and execute the query
+    $result = $conn->query($query);
+
+    // Check if there are results
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<div class='customer-card'>";
+            echo "<h3>Customer ID: " . htmlspecialchars($row['customer_id']) . "</h3>";
+            echo "<p><strong>Name:</strong> " . htmlspecialchars($row['customer_name']) . "</p>";
+            echo "<p><strong>Email:</strong> " . htmlspecialchars($row['email']) . "</p>";
+            echo "<p><strong>Address:</strong> " . htmlspecialchars($row['address']) . "</p>";
+            echo "<p><strong>Phone Number:</strong> " . htmlspecialchars($row['phone_number']) . "</p>";
+            echo "<p><strong>License Number:</strong> " . htmlspecialchars($row['license_number']) . "</p>";
+            echo "<p><strong>Rental ID:</strong> " . htmlspecialchars($row['rental_id']) . "</p>";
+            echo "<p><strong>Rental Date:</strong> " . htmlspecialchars($row['rental_date']) . "</p>";
+            echo "<p><strong>Return Date:</strong> " . htmlspecialchars($row['return_date']) . "</p>";
+            echo "<p><strong>Car ID:</strong> " . htmlspecialchars($row['car_id']) . "</p>";
+            echo "</div><hr>";
+        }
+    } else {
+        echo "<p>No rental data found for customers.</p>";
+    }
+
+    // Close the connection
+    $conn->close();
     ?>
   </div>
 
@@ -68,12 +93,16 @@ session_start();
       padding: 20px;
     }
 
-    .car-card {
+    .customer-card {
       border: 1px solid #ddd;
       padding: 15px;
       margin-bottom: 15px;
       border-radius: 5px;
       background-color: #C8D9E6;
+    }
+
+    hr {
+      border: 1px solid #ddd;
     }
   </style>
 </body>

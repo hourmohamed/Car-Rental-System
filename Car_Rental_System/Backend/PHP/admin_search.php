@@ -1,4 +1,3 @@
-
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -23,28 +22,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Start building the query
-    $query = "SELECT * FROM `car` WHERE 1=1"; // 1=1 ensures a valid base query
+    // Start building the query with JOINs
+    $query = "SELECT car.*, rental.rental_date, rental.return_date, customer.customer_id
+              FROM `car` 
+              LEFT JOIN `rental` ON car.car_id = rental.car_id 
+              LEFT JOIN `customer` ON rental.customer_id = customer.customer_id
+              WHERE 1=1"; // 1=1 ensures a valid base query
     $params = [];
     $types = "";
 
     if ($color) {
-        $query .= " AND `color` = ?";
+        $query .= " AND car.`color` = ?";
         $params[] = $color;
         $types .= "s";
     }
     if ($model) {
-        $query .= " AND `model` = ?";
+        $query .= " AND car.`model` = ?";
         $params[] = $model;
         $types .= "s";
     }
     if ($year) {
-        $query .= " AND `year` = ?";
+        $query .= " AND car.`year` = ?";
         $params[] = $year;
         $types .= "i";
     }
     if ($capacity) {
-        $query .= " AND `seating_capacity` = ?";
+        $query .= " AND car.`seating_capacity` = ?";
         $params[] = $capacity;
         $types .= "i";
     }

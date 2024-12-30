@@ -5,10 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $payment_method = $_POST['method'] ?? '';  
 
     if (!empty($license_number) && !empty($address) && !empty($payment_method)) {
-        $servername = "127.0.0.1";
+        $servername = "localhost";
         $username_db = "root";
         $password_db = "";
-        $db_name = "car_rental_system";
+        $db_name = "Car_Rental_System";
 
         $conn = new mysqli($servername, $username_db, $password_db, $db_name);
 

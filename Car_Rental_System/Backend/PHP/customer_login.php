@@ -6,10 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = trim($_POST['password'] ?? '');
 
     if (!empty($email) && !empty($password)) {
-        $servername = "127.0.0.1";
+        $servername = "localhost";
         $username_db = "root";
         $password_db = "";
-        $db_name = "car_rental_system";
+        $db_name = "Car_Rental_System";
 
         $conn = new mysqli($servername, $username_db, $password_db, $db_name);
 
@@ -18,7 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Connection failed.");
         }
 
-        $stmt = $conn->prepare("SELECT password FROM customer WHERE email = ?");
+        // Query to fetch password and customer_id from the customer table
+        $stmt = $conn->prepare("SELECT password, customer_id FROM customer WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -26,9 +27,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $stored_password = $row['password'];
+            $customer_id = $row['customer_id'];  // Retrieve customer_id
 
+            // Verify password (both MD5 and password_verify)
             if ($stored_password === md5($password) || password_verify($password, $stored_password)) {
-                header("Location: ../../Frontend/HTML/customer_search.html");
+                // Store customer ID and email in session for later use
+                $_SESSION['customer_id'] = $customer_id;
+                $_SESSION['email'] = $email;
+
+                // Redirect to customer_search.html with customer_id as a URL parameter
+                header("Location: ../../Frontend/HTML/customer_search.html?customer_id=" . $customer_id);
                 exit();
             } else {
                 $_SESSION['error'] = "Invalid password.";

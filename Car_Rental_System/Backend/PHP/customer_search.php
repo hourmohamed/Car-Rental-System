@@ -7,6 +7,15 @@ $username = "root";
 $password = "";
 $dbname = "Car_Rental_System";
 
+// Retrieve the customer_id from the URL query string
+if (isset($_GET['customer_id'])) {
+    $customer_id = $_GET['customer_id'];
+    echo "Customer ID: " . htmlspecialchars($customer_id);
+} else {
+    echo "Customer ID not found.";
+}
+
+
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate the input data
