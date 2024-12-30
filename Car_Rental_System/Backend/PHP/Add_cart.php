@@ -9,34 +9,41 @@ print_r($_GET);
 echo "</pre>";
 
 // Check if customer_email is passed
-if (isset($_GET['email']) && !empty($_GET['email'])) {
-    $customer_email = $_GET['email'];
+// if (isset($_GET['email']) && !empty($_GET['email'])) {
+//     $customer_email = $_GET['email'];
 
-    // Assuming $_SESSION['customer_search_results'] contains the customer data
-    if (isset($_SESSION['customer_search_results'])) {
-        $customer_search_results = $_SESSION['customer_search_results'];
+//     // Assuming $_SESSION['customer_search_results'] contains the customer data
+//     if (isset($_SESSION['customer_search_results'])) {
+//         $customer_search_results = $_SESSION['customer_search_results'];
 
-        // Find customer_id based on email
-        $customer_id = null;
-        foreach ($customer_search_results as $customer) {
-            if ($customer['email'] === $customer_email) {
-                $customer_id = $customer['customer_id'];
-                break;
-            }
-        }
+//         // Find customer_id based on email
+//         $customer_id = null;
+//         foreach ($customer_search_results as $customer) {
+//             if ($customer['email'] === $customer_email) {
+//                 $customer_id = $customer['customer_id'];
+//                 break;
+//             }
+//         }
 
-        // If no customer found
-        if ($customer_id === null) {
-            echo "<p>Customer ID not found for the provided email.</p>";
-            exit();
-        }
-    } else {
-        echo "<p>No customer search results found in session.</p>";
-        exit();
-    }
+//         // If no customer found
+//         if ($customer_id === null) {
+//             echo "<p>Customer ID not found for the provided email.</p>";
+//             exit();
+//         }
+//     } else {
+//         echo "<p>No customer search results found in session.</p>";
+//         exit();
+//     }
+// } else {
+//     echo "<p>Email is required to proceed.</p>";
+//     exit();
+// }
+if (isset($_SESSION['customer_id'])) {
+    $customer_id = $_SESSION['customer_id'];
+    echo "<p><strong>Customer ID:</strong> " . htmlspecialchars($customer_id) . "</p>";
 } else {
-    echo "<p>Email is required to proceed.</p>";
-    exit();
+    echo "<p>Customer ID not found in session. Please log in.</p>";
+    exit(); // Stop further processing if no customer_id
 }
 
 // Retrieve GET data for car details
