@@ -4,19 +4,19 @@ error_reporting(E_ALL);
 
 $servername = "localhost";
 $username = "root";
-$password = "109578HH";
+$password = "";
 $dbname = "Car_Rental_System";
 
-// Retrieve the customer_id from the URL query string
-if (isset($_GET['customer_id'])) {
-    $customer_id = $_GET['customer_id'];
+// Check if the customer_id is passed in the URL
+if (isset($_POST['customer_id'])) {
+    $customer_id = $_POST['customer_id'];
     echo "Customer ID: " . htmlspecialchars($customer_id);
 } else {
     echo "Customer ID not found.";
 }
 
 
-// Check if form is submitted
+// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate the input data
     $color = isset($_POST["color"]) ? htmlspecialchars($_POST["color"]) : null;
@@ -76,16 +76,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $carResults[] = $row;
     }
 
-    // Store the results in a session or pass them as a URL parameter
+    // Store the results in the session
     session_start();
     $_SESSION['car_results'] = $carResults;
 
     $stmt->close();
     $conn->close();
 
-    // Redirect to the results page
-    //header('Location: customer_search_results.php');
-    header("Location: customer_search_results.php?customer_id=" . $customer_id);
+    // Redirect to the results page with customer_id in the URL
+   // $customer_id=8014;   //problem in redirecting hereee
+    header("Location: customer_search_results.php?customer_id=" . urlencode($customer_id));
     exit();
 } else {
     die("Invalid request method.");
